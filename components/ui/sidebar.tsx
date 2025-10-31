@@ -188,7 +188,7 @@ export const Sidebar = ({
       {/* Mobile Sidebar */}
       <div className="hidden">
         <h1 className="text-white font-bold text-xl flex items-center gap-2">
-          <Image src="/calorie-logo.jpg" alt="Calorie" width={24} height={24} />
+          <Image src="/public/calorie-logo.png" alt="Calorie" width={40} height={40} />
           Calorie
         </h1>
         <motion.button

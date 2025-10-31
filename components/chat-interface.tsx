@@ -113,15 +113,15 @@ export function ChatInterface() {
   {/* The vertical padding `py-8` is kept to give nice spacing at the top and bottom. */}
   <div className="w-full h-full px-4 py-0">
 
-    <div className="space-y-6">
+    <div className="space-y-8">
       {messages.map((message) => (
-        <div key={message.id} className={`flex w-full ${
-    message.type === "user" ? "justify-end ml-135" : "justify-start"
-  } mb-2`}>
+        <div key={message.id} className={`flex w-full h-full ${
+    message.type === "user" ? "justify-end" : "justify-start"
+  }`}>
           <Card
             className={`max-w-xs md:max-w-md lg:max-w-lg px-6 py-4 shadow-lg ${
               message.type === "user"
-                ? "bg-gradient-to-r from-primary to-secondary text-white rounded-3xl rounded-tr-sm"
+                ? "bg-gradient-to-r from-blue-700 to-blue-400 text-white rounded-3xl rounded-tr-sm"
                 : "bg-card border-2 border-accent/20 text-foreground rounded-3xl rounded-tl-sm"
             }`}
           >

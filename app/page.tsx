@@ -23,10 +23,10 @@ export default function Home() {
         
         {/* Header section containing the menu button and theme toggle */}
         {/* Top gradient bar with toggler and theme toggle */}
-        <div className="w-full bg-gradient-to-r from-primary via-secondary to-accent dark:from-primary dark:via-secondary dark:to-accent p-4 md:p-6 shadow-lg z-10">
+        <div className="w-full bg-gradient-to-r from-blue-700 to-blue-400 p-4 md:p-6 shadow-lg z-10">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Image src="/calorie-logo.jpg" alt="Calorie" width={40} height={40} />
+              <Image src="/calorie-logo.png" alt="Calorie" width={40} height={40} />
               <h1 className="text-white text-xl font-bold hidden md:block">Calorie</h1>
             </div>
 
