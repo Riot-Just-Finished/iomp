@@ -132,7 +132,7 @@ export function DietsPage() {
       </div>
 
       {/* Diet Plans */}
-      <ScrollArea className="flex-1 overflow-hidden">
+      <ScrollArea className="flex-1 overflow-hidden py-100">
         <div className="max-w-4xl mx-auto px-6 py-8 w-full">
           <div className="space-y-4">
             {dietsData.map((diet) => (

@@ -47,8 +47,8 @@ export function WorkoutsPage() {
       </div>
 
       {/* Workout Plans */}
-      <ScrollArea className="flex-1 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 py-8 w-full">
+      <ScrollArea className="flex-1 overflow-hidden py-100">
+        <div className="max-w-4xl mx-auto px-10 py-8 w-full">
           <div className="space-y-4">
             {currentWorkouts.map((workout) => (
               <motion.div
