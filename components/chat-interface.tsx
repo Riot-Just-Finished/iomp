@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState } from "react"
-import { WavyBackground } from "@/components/ui/wavy-background"
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input"
 import { Card } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -69,67 +68,44 @@ export function ChatInterface() {
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      {/* Background Wave Effect */}
-      <div className="fixed inset-0 -z-10">
-        <WavyBackground
-          colors={["#22c55e", "#f97316", "#0ea5e9"]}
-          waveWidth={100}
-          backgroundFill="transparent"
-          blur={2}
-          speed="slow"
-          waveOpacity={0.1}
-          className="h-full w-full"
-          containerClassName="h-full w-full"
-        />
-      </div>
-
-      {/* Header - Replaced emoji logo with image */}
-      <div className="bg-gradient-to-r from-primary via-secondary to-accent dark:from-primary dark:via-secondary dark:to-accent p-6 shadow-lg">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
-            <Image src="/calorie-logo.jpg" alt="Calorie" width={48} height={48} priority />
-            Calorie
-          </h1>
-          <p className="text-primary-foreground/90 mt-2 text-sm md:text-base">Your AI Fitness Coach</p>
+<ScrollArea className="flex-1 overflow-y-auto py-60">
+  {/* --- CHANGE: REMOVED THE LARGE BOTTOM MARGIN --- */}
+  {/* The `mb-24` class was creating a large empty space at the bottom. */}
+  {/* Removing it allows the chat content to fill the vertical space completely. */}
+  {/* The vertical padding `py-8` is kept to give nice spacing at the top and bottom. */}
+  <div className="max-w-6xl mx-auto w-full px-4 py-10">
+    <div className="space-y-6">
+      {messages.map((message) => (
+        <div key={message.id} className={`flex ${message.type === "user" ? "justify-end" : "justify-start"}`}>
+          <Card
+            className={`max-w-xs md:max-w-md lg:max-w-lg px-6 py-4 shadow-lg ${
+              message.type === "user"
+                ? "bg-gradient-to-r from-primary to-secondary text-white rounded-3xl rounded-tr-sm"
+                : "bg-card border-2 border-accent/20 text-foreground rounded-3xl rounded-tl-sm"
+            }`}
+          >
+            <p className="text-sm md:text-base leading-relaxed">{message.content}</p>
+            <p
+              className={`text-xs mt-2 ${
+                message.type === "user" ? "text-primary-foreground/70" : "text-muted-foreground"
+              }`}
+            >
+              {message.timestamp.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </p>
+          </Card>
         </div>
-      </div>
-
-      {/* Chat Area */}
-      <ScrollArea className="flex-1 overflow-y-auto">
-        <div className="max-w-4xl mx-auto w-full px-4 py-8 mb-24">
-          <div className="space-y-6">
-            {messages.map((message) => (
-              <div key={message.id} className={`flex ${message.type === "user" ? "justify-end" : "justify-start"}`}>
-                <Card
-                  className={`max-w-xs md:max-w-md lg:max-w-lg px-6 py-4 shadow-lg ${
-                    message.type === "user"
-                      ? "bg-gradient-to-r from-primary to-secondary text-white rounded-3xl rounded-tr-sm"
-                      : "bg-card border-2 border-accent/20 text-foreground rounded-3xl rounded-tl-sm"
-                  }`}
-                >
-                  <p className="text-sm md:text-base leading-relaxed">{message.content}</p>
-                  <p
-                    className={`text-xs mt-2 ${
-                      message.type === "user" ? "text-primary-foreground/70" : "text-muted-foreground"
-                    }`}
-                  >
-                    {message.timestamp.toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </p>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </ScrollArea>
-
+      ))}
+    </div>
+  </div>
+</ScrollArea>
       {/* Input Area */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-border p-6 shadow-2xl">
-        <div className="max-w-4xl mx-auto">
+      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-border p-3 shadow-2xl">
+        <div className="max-w-6xl mx-auto">
           <PlaceholdersAndVanishInput placeholders={placeholders} onChange={handleChange} onSubmit={handleSubmit} />
-          <p className="text-xs text-muted-foreground mt-3 text-center">
+          <p className="text-xs text-muted-foreground mt-2 text-center">
             💡 Calorie can help you track meals, estimate calories, and provide fitness tips!
           </p>
         </div>
