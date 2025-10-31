@@ -7,6 +7,25 @@ import { workoutsData } from "@/utils/workouts-data"
 import { motion, AnimatePresence } from "motion/react"
 import { IconChevronDown } from "@tabler/icons-react"
 
+interface Exercise {
+  name: string
+  sets: string
+  reps: string
+  rest: string
+  notes?: string
+}
+
+interface WorkoutDay {
+  [key: string]: Exercise[]
+}
+
+interface Workout {
+  level: string
+  goal: string
+  frequency: string
+  days: WorkoutDay
+}
+
 export function WorkoutsPage() {
   const [selectedType, setSelectedType] = useState<"gym" | "home">("gym")
   const [expandedLevel, setExpandedLevel] = useState<string>("Beginner")
@@ -98,7 +117,7 @@ export function WorkoutsPage() {
                                 <p className="text-muted-foreground italic text-sm">{dayLabel}</p>
                               ) : (
                                 <div className="space-y-2">
-                                  {exercises.map((exercise, idx) => (
+                                  {exercises.map((exercise: Exercise, idx: number) => (
                                     <div
                                       key={idx}
                                       className="bg-background rounded-lg p-4 border border-border/50 hover:border-primary/30 transition-colors"
