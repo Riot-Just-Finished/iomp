@@ -10,7 +10,7 @@ const ScrollArea = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
   <ScrollAreaPrimitive.Root {...props}>
-    <ScrollAreaPrimitive.Viewport ref={ref} className={cn("h-[200px] w-full rounded-md border", className)}>
+    <ScrollAreaPrimitive.Viewport ref={ref} className={cn("h-[2000px] bg-black w-full rounded-md border", className)}>
       <div className="w-max space-y-4">{children}</div>
     </ScrollAreaPrimitive.Viewport>
     <ScrollAreaPrimitive.Scrollbar orientation="vertical" className="flex touch-none select-none transition-colors">

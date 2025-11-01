@@ -105,21 +105,21 @@ export function ChatInterface() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col relative">
-<ScrollArea className="flex-1 overflow-y-auto py-60">
+    <div className="min-h-screen  flex flex-col bg-white  relative">
+<ScrollArea className="flex-1  overflow-y-auto  py-20">
   {/* --- CHANGE: REMOVED THE LARGE BOTTOM MARGIN --- */}
   {/* The `mb-24` class was creating a large empty space at the bottom. */}
   {/* Removing it allows the chat content to fill the vertical space completely. */}
   {/* The vertical padding `py-8` is kept to give nice spacing at the top and bottom. */}
-  <div className="w-full h-full px-4 py-0">
 
-    <div className="space-y-8">
+
+    <div className="space-y-8 bg-blue  w-[1230px]">
       {messages.map((message) => (
-        <div key={message.id} className={`flex w-full h-full ${
+        <div key={message.id} className={`flex w-full h-full   ${
     message.type === "user" ? "justify-end" : "justify-start"
   }`}>
           <Card
-            className={`max-w-xs md:max-w-md lg:max-w-lg px-6 py-4 shadow-lg ${
+            className={`max-w-xs md:max-w-md lg:max-w-lg  px-6 py-4 shadow-lg ${
               message.type === "user"
                 ? "bg-gradient-to-r from-blue-700 to-blue-400 text-white rounded-3xl rounded-tr-sm"
                 : "bg-card border-2 border-accent/20 text-foreground rounded-3xl rounded-tl-sm"
@@ -127,8 +127,8 @@ export function ChatInterface() {
           >
             <p className="text-sm md:text-base leading-relaxed">{message.content}</p>
             <p
-              className={`text-xs mt-2 ${
-                message.type === "user" ? "text-primary-foreground/70" : "text-muted-foreground"
+              className={`text-xs mt-2   ${
+                message.type === "user" ? "text-primary-foreground/70 " : "text-muted-foreground"
               }`}
             >
               {message.timestamp.toLocaleTimeString([], {
@@ -147,7 +147,7 @@ export function ChatInterface() {
         </div>
       )}
     </div>
-  </div>
+
 </ScrollArea>
       {/* Input Area */}
       <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-border p-3 shadow-2xl">
